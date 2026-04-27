@@ -150,7 +150,7 @@ export default function App() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.5 }}
-                  className="text-8xl lg:text-[10rem] font-serif font-black text-ink/5 tabular-nums"
+                  className="text-8xl lg:text-[10rem] font-serif font-black text-gold/30 tabular-nums z-10"
                 >
                   {shuffleNumber ?? "?"}
                 </motion.div>
@@ -160,7 +160,7 @@ export default function App() {
                   initial={{ opacity: 0, scale: 0.2, rotate: 180 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ type: "spring", damping: 15, stiffness: 150 }}
-                  className="w-full h-full flex items-center justify-center text-[18vh] lg:text-[24vh] font-serif font-bold text-ink drop-shadow-[5px_5px_0px_rgba(197,160,89,0.15)] leading-none tabular-nums select-none"
+                  className="w-full h-full flex items-center justify-center text-[18vh] lg:text-[24vh] font-serif font-bold text-ink drop-shadow-[5px_5px_0px_rgba(197,160,89,0.15)] leading-none tabular-nums select-none z-10"
                 >
                   {currentNumber}
                 </motion.div>
@@ -168,7 +168,7 @@ export default function App() {
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex flex-col items-center text-accent-light"
+                  className="flex flex-col items-center text-accent-light z-10"
                 >
                   <Trophy className="w-20 h-20 lg:w-28 lg:h-28 opacity-20" />
                 </motion.div>
