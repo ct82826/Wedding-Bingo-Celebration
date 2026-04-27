@@ -113,14 +113,14 @@ export default function App() {
   return (
     <div className="h-screen w-screen bg-bg-warm flex flex-col md:flex-row overflow-hidden font-serif selection:bg-gold/10">
       {/* Main Panel - Optimized to fit single screen */}
-      <main className="flex-[3] lg:flex-[4] flex flex-col items-center justify-between p-6 lg:p-10 border-b md:border-b-0 md:border-r border-accent-light relative h-full overflow-hidden">
+      <main className="flex-[3] lg:flex-[4] flex flex-col items-center justify-between p-4 lg:p-8 border-b md:border-b-0 md:border-r border-accent-light relative h-full overflow-hidden">
         
         {/* Header - Balanced Scale */}
         <header className="text-center w-full pt-2">
           <motion.h1 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-gold text-4xl lg:text-5xl tracking-[0.3em] uppercase font-light leading-tight mb-1"
+            className="text-gold text-3xl lg:text-5xl tracking-[0.3em] uppercase font-light leading-tight mb-1"
           >
             Chen Ting & Chang Ling
           </motion.h1>
@@ -128,16 +128,16 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-ink/40 italic text-lg lg:text-xl tracking-[0.2em]"
+            className="text-ink/40 italic text-md lg:text-xl tracking-[0.2em]"
           >
             Wedding Bingo Celebration
           </motion.p>
         </header>
 
         {/* Scaled Ball Display - Guaranteed to fit */}
-        <div className="flex-1 flex items-center justify-center w-full max-h-[55%] my-2">
+        <div className="flex-1 flex items-center justify-center w-full max-h-[45vh] lg:max-h-[50vh] my-2">
           <motion.div 
-            className="aspect-square h-full max-h-[50vh] lg:max-h-[55vh] rounded-full border-[5px] border-gold flex items-center justify-center relative bg-[radial-gradient(circle_at_30%_30%,#fff_0%,#fcfaf7_100%)] shadow-[0_40px_100px_rgba(197,160,89,0.25)]"
+            className="aspect-square h-full max-h-[38vh] lg:max-h-[45vh] rounded-full border-[5px] border-gold flex items-center justify-center relative bg-[radial-gradient(circle_at_30%_30%,#fff_0%,#fcfaf7_100%)] shadow-[0_40px_100px_rgba(197,160,89,0.25)]"
             animate={isDrawing ? { scale: [1, 1.02, 1] } : {}}
             transition={{ repeat: Infinity, duration: 0.5 }}
           >
@@ -150,7 +150,7 @@ export default function App() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.5 }}
-                  className="text-9xl lg:text-[12rem] font-serif font-black text-ink/5 tabular-nums"
+                  className="text-8xl lg:text-[10rem] font-serif font-black text-ink/5 tabular-nums"
                 >
                   {shuffleNumber ?? "?"}
                 </motion.div>
@@ -160,7 +160,7 @@ export default function App() {
                   initial={{ opacity: 0, scale: 0.2, rotate: 180 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ type: "spring", damping: 15, stiffness: 150 }}
-                  className="w-full h-full flex items-center justify-center text-[22vh] lg:text-[28vh] font-serif font-bold text-ink drop-shadow-[6px_6px_0px_rgba(197,160,89,0.15)] leading-none tabular-nums select-none"
+                  className="w-full h-full flex items-center justify-center text-[18vh] lg:text-[24vh] font-serif font-bold text-ink drop-shadow-[5px_5px_0px_rgba(197,160,89,0.15)] leading-none tabular-nums select-none"
                 >
                   {currentNumber}
                 </motion.div>
@@ -170,7 +170,7 @@ export default function App() {
                   animate={{ opacity: 1 }}
                   className="flex flex-col items-center text-accent-light"
                 >
-                  <Trophy className="w-24 h-24 lg:w-32 lg:h-32 opacity-20" />
+                  <Trophy className="w-20 h-20 lg:w-28 lg:h-28 opacity-20" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -178,38 +178,38 @@ export default function App() {
         </div>
 
         {/* Action Controls - Scaled down for one-page fit */}
-        <div className="flex flex-col items-center gap-4 w-full pb-6">
+        <div className="flex flex-col items-center gap-3 w-full pb-4">
           <button
             onClick={drawNextNumber}
             disabled={isDrawing || drawnNumbers.length >= MAX_NUMBER}
             className={`
-              w-full max-w-2xl py-6 lg:py-8 bg-ink text-white font-sans text-xl lg:text-2xl tracking-[0.4em] uppercase rounded-sm border-2 border-ink
-              transition-all duration-300 active:scale-[0.98] shadow-xl shadow-ink/20
-              hover:bg-gold hover:text-white hover:border-gold disabled:opacity-20 disabled:cursor-not-allowed
+              w-full max-w-xl py-5 lg:py-7 bg-ink text-white font-sans text-lg lg:text-xl tracking-[0.5em] uppercase rounded-sm border-2 border-ink
+              transition-all duration-500 active:scale-[0.98] shadow-xl shadow-ink/20
+              hover:bg-gold hover:text-white hover:border-gold disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer
             `}
           >
-            {isDrawing ? "抽籤中..." : drawnNumbers.length >= MAX_NUMBER ? "抽籤完畢" : "抽取號碼"}
+            {isDrawing ? "Drawing..." : drawnNumbers.length >= MAX_NUMBER ? "Registry Full" : "Draw Number"}
           </button>
 
           <button 
             onClick={resetGame}
             disabled={isDrawing}
-            className="text-ink/20 hover:text-rose-400 text-xs uppercase tracking-[0.3em] font-bold transition-all duration-300 flex items-center gap-2 group p-2 disabled:opacity-0"
+            className="text-ink/30 hover:text-rose-500 text-[10px] uppercase tracking-[0.4em] font-bold transition-all duration-300 flex items-center gap-2 group p-2 disabled:opacity-0"
           >
             <RefreshCcw className="w-3 h-3 group-hover:rotate-180 transition-transform duration-700" /> 
             Reset Registry
           </button>
         </div>
 
-        <footer className="absolute bottom-4 left-8 text-sm uppercase tracking-[0.5em] text-ink/10 font-sans font-black">
+        <footer className="absolute bottom-4 left-6 text-[10px] uppercase tracking-[0.6em] text-ink/10 font-sans font-black">
           {drawnNumbers.length} / {MAX_NUMBER}
         </footer>
       </main>
 
       {/* Registry Panel - Optimized to fit without scrolling */}
-      <aside className="w-full md:w-[350px] lg:w-[450px] bg-white p-6 lg:p-8 flex flex-col h-full border-t md:border-t-0 border-accent-light shadow-2xl z-10">
-        <h2 className="text-xl text-center text-gold font-sans font-bold tracking-[0.4em] uppercase pb-4 mb-4 border-b border-accent-light flex-none">
-          號碼清單
+      <aside className="w-full md:w-[320px] lg:w-[400px] bg-white p-4 lg:p-6 flex flex-col h-full border-t md:border-t-0 border-accent-light shadow-2xl z-10">
+        <h2 className="text-base text-center text-gold font-sans font-medium tracking-[0.5em] uppercase pb-3 mb-3 border-b border-accent-light flex-none">
+          Live Registry
         </h2>
 
         <div className="flex-1 min-h-0">
